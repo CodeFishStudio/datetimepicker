@@ -13,13 +13,15 @@ public class RNDateTimePickerPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
       return Arrays.<NativeModule>asList(
-        new RNDatePickerDialogModule(reactContext),
-        new RNTimePickerDialogModule(reactContext)
+        new com.reactcommunity.rndatetimepicker.RNDatePickerDialogModule(reactContext),
+        new com.reactcommunity.rndatetimepicker.RNTimePickerDialogModule(reactContext)
       );
     }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
+      return Arrays.<ViewManager>asList(
+              new com.reactcommunity.rndatetimepicker.ReactTimePickerManager(reactContext)
+      );
     }
 }

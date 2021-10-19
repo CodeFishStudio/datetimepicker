@@ -11,7 +11,9 @@ import {
   useColorScheme,
   Switch,
 } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, {
+  TimePicker,
+} from '@react-native-community/datetimepicker';
 import SegmentedControl from '@react-native-community/segmented-control';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import React, {useState} from 'react';
@@ -102,6 +104,9 @@ export const App = () => {
     }
   };
 
+  const handleOnChange = (event: any) => {
+    console.log('Handling on change', event.nativeEvent);
+  };
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -112,6 +117,12 @@ export const App = () => {
     return (
       <SafeAreaView style={[backgroundStyle, {flex: 1}]}>
         <StatusBar barStyle="dark-content" />
+        <TimePicker
+          style={{flex: 1, minHeight: 400}}
+          onChange={handleOnChange}
+          hour={2}
+          minute={24}
+        />
         <ScrollView testID="DateTimePickerScrollView">
           {global.HermesInternal != null && (
             <View style={styles.engine}>
